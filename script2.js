@@ -21,11 +21,18 @@ function getData (url){
         data.products.forEach((product) =>{
             let elem=document.createElement("div")
             elem.setAttribute("class","box")
-            product.images.forEach((image) => {
-                console.log(image);
-            })
             elem.innerHTML=`<h2>${product.title}</h2> <img src="${product.thumbnail}"><p>${product.description}</p> <h4>price: ${product.price}$</h4>`
             inner.append(elem)
+            for(let i = 0; i < product.images.length; i++){
+                let cont = document.createElement('div')
+                let change = document.createElement('div')
+                change.setAttribute("class","change")
+                change.innerHTML = ''
+                inner.append(change)
+                change.addEventListener('click', () => {
+                    elem.innerHTML=`<h2>${product.title}</h2> <img src="${product.images[i]}"><p>${product.description}</p> <h4>price: ${product.price}$</h4>`
+                })
+            }
         })
     }
     xhr.send()

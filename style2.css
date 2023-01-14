@@ -28,6 +28,7 @@ body{
     color: rgb(76, 23, 23);
     border-radius: 11px;
     border: 3px solid;
+    cursor: pointer;
 }
 
 .container1 a{
@@ -56,6 +57,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* margin: 50px; */
 }
 
 .container2 .inner h2{
@@ -72,10 +74,12 @@ body{
 }
 
 .container2 .inner p{
+    margin-top: 15px;
     margin-bottom: 0px;
     font-style: italic;
     color: rgb(21, 7, 35);
 }
+
 
 .container2 .inner .box{
     border: 3px solid;
@@ -85,10 +89,21 @@ body{
     flex-wrap: wrap;
     align-items: center;
     background-color: rebeccapurple;
-    /* height: 800px; */
 }
 
 .container2 .inner .box img{
     width: 190px;
     height: 170px;
+}
+
+
+.change{
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid;
+    cursor: pointer;
+    border: 1px red;
+    border: 1px solid;
 }

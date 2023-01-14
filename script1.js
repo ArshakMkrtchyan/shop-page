@@ -3,6 +3,9 @@ let password = document.querySelector('.password')
 let login = document.querySelector('.login')
 let error = document.querySelector('.error')
 
+let obj = {};
+let postArr = [];
+
 let storage = [{
     username: 'kminchelle',
     password: '0lelplR'
@@ -28,22 +31,20 @@ login.addEventListener('click', function getDAta() {
         localStorage.setItem('user', JSON.stringify(storage))
         location.pathname = 'index2.html'
 
+        obj.username = username.value;
+        obj.password = password.value;
+        let url = `https://reqres.in/api/users`;
         let xhr = new XMLHttpRequest();
-        let obj = {};
-        let arr = []
-        xhr.open('POST', 'https://dummyjson.com/auth/login');
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        xhr.onload = () => {
-        obj = {
-            body: JSON.stringify({
-                username: username.value,
-                password: password.value
-            })
-        }
-        arr.push(JSON.parse(obj.body))
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        xhr.onload = (response) => {
+        let res = response.currentTarget.response;
+        let user = JSON.parse(res);
+        postArr.push(user);
+        console.log(postArr, "post");
     }
-    xhr.send(JSON.stringify(obj.body))
-        }
+    xhr.send(JSON.stringify(obj));
+}
         else {
             error.innerHTML = 'Wrong username or password'
         }
